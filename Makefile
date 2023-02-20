@@ -1,9 +1,15 @@
+SHELL := /bin/bash -e
+
 all:
 	@more $(MAKEFILE_LIST)
-.PHONY: all
+
+lint:
+	go vet ./...
 
 fmt:
 	go fmt ./...
+
 test:
 	go test -v ./...
-.PHONY: fmt test
+
+.PHONY: all lint fmt test
